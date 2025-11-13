@@ -1,21 +1,114 @@
 # 🎬 Tubey AI Video Automation
 
-**AI-Powered Horse Racing Nostalgia Video Creator**
+**AI-Powered Video Creator for Real Content Channels**
 
-Tubey transforms your tagged media library into compelling, professionally-produced YouTube videos using GPT-5 intelligence. Built for daily content creation with zero manual editing.
+Tubey transforms your tagged media library into compelling, professionally-produced YouTube videos using GPT-5 intelligence. Built for content creators who need **real footage and images** - not AI-generated content.
 
 ---
 
 ## 🎯 Vision
 
-Create stunning horse racing nostalgia videos daily by simply uploading tagged images/videos. GPT-5 handles the storytelling, video assembly, and YouTube publishing automatically.
+**The Problem:** Content creators running true crime, missing persons, historical documentary, and real-event channels spend hours manually editing videos, matching footage to narratives, and assembling content.
 
-**Example Workflow:**
-1. Upload 20 photos + 5 race clips of "Gloria Victis"
-2. Tag them: "Gloria Victis Horse", "Gloria Victis Trainer Martin Pipe", "Gloria Victis Winning"
-3. Set title: "UK's Most Tragic Horses"
-4. Click Generate
-5. AI creates script, assembles video, publishes to YouTube
+**The Solution:** Upload your real images and footage with tags, set a title, and let GPT-5 handle the storytelling, video assembly, and YouTube publishing automatically.
+
+### Target Users:
+- **True Crime Channels** - Jack the Ripper, unsolved mysteries, cold cases
+- **Missing Persons Channels** - Real cases, awareness campaigns
+- **Historical Documentary Channels** - Wars, events, biographies
+- **Real Event Channels** - Disasters, tragedies, historical moments
+- **Nostalgia Channels** - Sports history, cultural moments, vintage content
+- **Any channel requiring authentic footage** - Not AI-generated content
+
+---
+
+## 💡 How It Works
+
+**Example: True Crime Video**
+
+1. **Upload Real Media:**
+   - Image: "Jack the Ripper first victim - Mary Ann Nichols"
+   - Image: "London Whitechapel area 1888"
+   - Image: "Crime scene sketch - Buck's Row"
+   - Video: "Crime detective Jim Smith discussing suspects"
+   - Video: "Victorian London street footage"
+
+2. **Tag Everything:**
+   - Tags describe what's in each image/video
+   - Tags can reference people, places, events, experts, evidence
+   - No strict format - natural language tags
+
+3. **Set Video Title:**
+   - "The Untold Story of Jack the Ripper's First Victim"
+
+4. **Click Generate:**
+   - GPT-5 analyzes all your tagged media
+   - Creates a compelling narrative script
+   - Intelligently selects which media to show when
+   - Determines optimal scene order and timing
+   - Assembles video with transitions
+   - Generates voiceover narration
+   - Creates YouTube metadata (title, description, tags, thumbnail)
+
+5. **Auto-Publish to YouTube:**
+   - Video goes live automatically
+   - Or save as draft for review
+
+---
+
+## 🧠 GPT-5 Intelligence Layer
+
+GPT-5 powers every critical decision:
+
+### 1. **Script Generation**
+- Analyzes your entire tagged media library
+- Creates compelling narratives that match available footage
+- Structures content for optimal pacing (5-45 min videos)
+- Generates emotional, engaging storytelling
+- **Uses only the media you provide** - no hallucination
+
+### 2. **Smart Media Matching**
+- Parses script to identify which tags are mentioned
+- Intelligently selects best media for each moment
+- Balances image/video usage for visual variety
+- Handles missing media gracefully (adjusts script)
+- **Orders media in the most compelling sequence**
+
+### 3. **Scene Timing & Pacing**
+- Calculates optimal scene duration based on content type
+- Prioritizes action footage over static images
+- Creates natural transitions between segments
+- Syncs media with voiceover timing
+
+### 4. **Metadata Generation**
+- Auto-generates YouTube titles, descriptions, tags
+- Creates SEO-optimized content
+- Generates compelling thumbnails from your media
+- Adds calls-to-action
+
+---
+
+## 🎬 Real-World Use Cases
+
+### True Crime Channel
+**Upload:** Crime scene photos, suspect images, detective interviews, location footage  
+**Title:** "The Zodiac Killer's Hidden Message Finally Decoded"  
+**Result:** 25-minute documentary-style video with expert commentary
+
+### Missing Persons Channel
+**Upload:** Photos of missing person, family interviews, last known location footage  
+**Title:** "Help Find Sarah: Missing Since 2019"  
+**Result:** Awareness video with timeline and call-to-action
+
+### Historical Documentary
+**Upload:** Archival photos, war footage, historian interviews, maps  
+**Title:** "D-Day: The Untold Stories of Omaha Beach"  
+**Result:** Educational documentary with historical context
+
+### Sports Nostalgia (Original Example)
+**Upload:** Race clips, horse photos, jockey interviews, vintage footage  
+**Title:** "UK's Most Tragic Horses: Gloria Victis Story"  
+**Result:** Emotional tribute video with race highlights
 
 ---
 
@@ -50,36 +143,6 @@ Create stunning horse racing nostalgia videos daily by simply uploading tagged i
 │                  └──────────────┘                          │
 └─────────────────────────────────────────────────────────────┘
 ```
-
----
-
-## 🧠 GPT-5 Intelligence Layer
-
-GPT-5 powers every critical decision:
-
-### 1. **Script Generation**
-- Analyzes tagged media library
-- Creates compelling narratives matching available footage
-- Structures content for optimal pacing (5-45 min videos)
-- Generates emotional, nostalgic storytelling
-
-### 2. **Smart Media Matching**
-- Parses script to identify tag mentions
-- Intelligently selects best media for each moment
-- Balances image/video usage for visual variety
-- Handles missing media gracefully
-
-### 3. **Scene Timing & Pacing**
-- Calculates optimal scene duration based on content type
-- Prioritizes action footage (races) over static images
-- Creates natural transitions between segments
-- Syncs media with voiceover timing
-
-### 4. **Metadata Generation**
-- Auto-generates YouTube titles, descriptions, tags
-- Creates SEO-optimized content
-- Generates compelling thumbnails
-- Adds calls-to-action
 
 ---
 
@@ -230,7 +293,7 @@ tubey-ai-video-automation/
 ### **Integrations**
 - **YouTube:** YouTube Data API v3
 - **Auth:** Supabase Auth
-- **Hosting:** Vercel (frontend) + Railway (backend) - Free tiers
+- **Hosting:** Vercel (frontend) + Railway (backend)
 
 ---
 
@@ -249,7 +312,7 @@ SUPABASE_SERVICE_KEY=...
 # YouTube
 YOUTUBE_CLIENT_ID=...
 YOUTUBE_CLIENT_SECRET=...
-YOUTUBE_REFRESH_TOKEN=...
+YOUTUBE_REDIRECT_URI=...
 
 # TTS (Optional)
 ELEVENLABS_API_KEY=...
@@ -262,138 +325,70 @@ FRONTEND_URL=http://localhost:3000
 
 ---
 
-## 📊 Database Schema
+## 💰 Business Model
 
-### **Projects**
-```sql
-CREATE TABLE projects (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID REFERENCES auth.users(id),
-  title TEXT NOT NULL,
-  description TEXT,
-  target_duration INTEGER, -- seconds
-  status TEXT DEFAULT 'draft', -- draft, processing, completed, failed
-  script TEXT,
-  video_url TEXT,
-  youtube_url TEXT,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-```
+### Target Market
+- **True Crime Creators** - High demand, consistent content needs
+- **Documentary Channels** - Educational content, archival footage
+- **Nostalgia Channels** - Sports, music, cultural history
+- **News/Current Events** - Breaking stories, analysis
 
-### **Media Assets**
-```sql
-CREATE TABLE media_assets (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
-  file_url TEXT NOT NULL,
-  file_type TEXT NOT NULL, -- image, video
-  file_size INTEGER,
-  duration INTEGER, -- for videos, in seconds
-  tags TEXT[], -- array of tags
-  created_at TIMESTAMP DEFAULT NOW()
-);
-```
+### Pricing Strategy (Future)
+- **Free Tier:** 2 videos/month, watermark
+- **Creator Plan:** $29/month - 10 videos, no watermark
+- **Pro Plan:** $79/month - Unlimited videos, priority processing
+- **Enterprise:** Custom pricing for agencies/networks
 
-### **Video Renders**
-```sql
-CREATE TABLE video_renders (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
-  status TEXT DEFAULT 'queued', -- queued, processing, completed, failed
-  progress INTEGER DEFAULT 0, -- 0-100
-  error_message TEXT,
-  output_url TEXT,
-  duration INTEGER,
-  file_size INTEGER,
-  created_at TIMESTAMP DEFAULT NOW(),
-  completed_at TIMESTAMP
-);
-```
+### Key Differentiator
+**Real content only** - No AI-generated images/videos. Perfect for channels that need authenticity and credibility.
 
 ---
 
-## 🧪 Gateway Tests
+## 🎯 Success Metrics
 
-Each phase has specific criteria that must pass before proceeding:
+### MVP Goals
+- Generate 5-minute video from 20 tagged media items
+- Script quality: Coherent, engaging, factually grounded
+- Video quality: Smooth transitions, proper pacing
+- YouTube upload: Successful with metadata
 
-### **Gateway 1: Foundation**
-- [ ] Repository structure approved
-- [ ] Database schema validated
-- [ ] API architecture documented
-- [ ] Tech stack confirmed
-
-### **Gateway 2: Frontend Core**
-- [ ] Purple/black theme implemented correctly
-- [ ] Glowing buttons functional
-- [ ] All core pages render
-- [ ] Responsive design works
-
-### **Gateway 3: Backend Core**
-- [ ] All API endpoints respond
-- [ ] Database CRUD operations work
-- [ ] File upload/download functional
-- [ ] Authentication working
-
-### **Gateway 4: GPT-5 Integration**
-- [ ] GPT-5 API connected
-- [ ] Script generation produces quality output
-- [ ] Tag matching algorithm accurate
-- [ ] Context management efficient
-
-### **Gateway 5: Video Processing**
-- [ ] FFmpeg generates valid video files
-- [ ] Scene transitions smooth
-- [ ] Audio sync perfect
-- [ ] Output quality acceptable
-
-### **Gateway 6: YouTube Integration**
-- [ ] Video uploads successfully
-- [ ] Metadata applied correctly
-- [ ] Thumbnails generated & uploaded
-- [ ] Published videos accessible
-
-### **Gateway 7: End-to-End**
-- [ ] Complete workflow works without errors
-- [ ] Video quality meets standards
-- [ ] Processing time acceptable
-- [ ] System handles errors gracefully
+### Post-Launch Goals
+- 100 active users in first 3 months
+- 1,000 videos generated in first 6 months
+- 90% user satisfaction rating
+- <5% video rejection rate
 
 ---
 
-## 🚦 Getting Started (Tomorrow)
+## 📝 Development Notes
 
-When you're ready to continue:
+### Key Principles
+1. **Real Media Only** - Never generate fake content
+2. **User Control** - Users provide all media, AI organizes it
+3. **Transparency** - Show which media is used where
+4. **Quality Over Speed** - Better to take time than produce poor content
+5. **Ethical Use** - Respect copyright, privacy, and sensitivity
 
-1. **Review this README** - Ensure architecture aligns with vision
-2. **Approve Gateway 1** - Confirm we proceed to Phase 2
-3. **Set up environment** - Get API keys ready (OpenAI, YouTube)
-4. **Choose hosting** - Confirm Vercel + Railway free tiers
-
----
-
-## 📝 Notes
-
-- **GPT-5 at the core:** Every decision flows through GPT-5 intelligence
-- **Gateway-driven:** No phase starts until previous gateway passes
-- **Purple/black aesthetic:** Consistent throughout entire app
-- **Built for scale:** Architecture supports future multi-user expansion
-- **Real media only:** AI organizes authentic footage, never generates fake content
+### Future Enhancements
+- Multi-language support
+- Custom voiceover uploads
+- Advanced editing controls
+- Collaboration features
+- Analytics dashboard
+- Template library
 
 ---
 
-## 🎯 Success Criteria
+## 📄 License
 
-**Tubey is successful when:**
-- You upload media in the morning
-- Click "Generate Video"
-- Go to work
-- Come home to a published YouTube video
-- Repeat daily with zero manual editing
+MIT License - See LICENSE file for details
 
 ---
 
-**Built with 💜 for Horse Racing Nostalgia**
+## 🤝 Contributing
 
-*Repository created: November 13, 2025*
-*Ready for Phase 2 development*
+This is currently a solo project. Contributions welcome after MVP launch.
+
+---
+
+**Built with ❤️ for content creators who value authenticity**
